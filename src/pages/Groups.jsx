@@ -6,7 +6,7 @@ const Groups = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/groups')
+        fetch('/api/groups')
             .then(res => res.json())
             .then(data => setGroups(data))
             .catch(err => console.error(err));

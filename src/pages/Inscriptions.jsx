@@ -22,8 +22,8 @@ const Inscriptions = () => {
         setLoading(true);
         try {
             const [partsRes, groupsRes] = await Promise.all([
-                fetch('http://localhost:3001/api/participants'),
-                fetch('http://localhost:3001/api/groups')
+                fetch('/api/participants'),
+                fetch('/api/groups')
             ]);
 
             const partsData = await partsRes.json();
@@ -49,7 +49,7 @@ const Inscriptions = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3001/api/participants', {
+            const response = await fetch('/api/participants', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

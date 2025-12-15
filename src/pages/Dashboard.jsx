@@ -13,7 +13,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/dashboard');
+                const response = await fetch('/api/dashboard');
                 const data = await response.json();
 
                 // Transform API data to UI format

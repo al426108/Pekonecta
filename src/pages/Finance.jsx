@@ -9,7 +9,7 @@ const Finance = () => {
 
     useEffect(() => {
         // Fetch all participants and filter or create specific endpoint
-        fetch('http://localhost:3001/api/participants')
+        fetch('/api/participants')
             .then(res => res.json())
             .then(data => {
                 const pending = data.filter(p => p.status === 'Pendiente');

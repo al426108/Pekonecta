@@ -6,7 +6,7 @@ const Staff = () => {
     const [monitors, setMonitors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/monitors')
+        fetch('/api/monitors')
             .then(res => res.json())
             .then(data => setMonitors(data))
             .catch(err => console.error(err));
@@ -35,8 +35,8 @@ const Staff = () => {
 
                             <div className="col-span-3">
                                 <span className={`px-3 py-1 rounded-full text-xs font-medium border ${monitor.role === 'Director' ? 'bg-purple-900/20 text-purple-400 border-purple-900/50' :
-                                        monitor.role === 'Enfermero' ? 'bg-green-900/20 text-green-400 border-green-900/50' :
-                                            'bg-blue-900/20 text-blue-400 border-blue-900/50'
+                                    monitor.role === 'Enfermero' ? 'bg-green-900/20 text-green-400 border-green-900/50' :
+                                        'bg-blue-900/20 text-blue-400 border-blue-900/50'
                                     }`}>
                                     {monitor.role}
                                 </span>
