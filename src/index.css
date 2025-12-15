@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.bg-dark');
+  color: theme('colors.text-main');
+  font-family: 'Inter', sans-serif;
+}

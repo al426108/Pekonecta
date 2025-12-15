@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Participant {
+  id          Int      @id @default(autoincrement())
+  name        String
+  medicalInfo String   @default("Ninguna")
+  status      String   @default("Pendiente") // "Pagado" | "Pendiente"
+  date        DateTime @default(now())
+  
+  groupId     Int?
+  group       Group?   @relation(fields: [groupId], references: [id])
+}
+
+model Group {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  participants Participant[]
+  
+  monitorId    Int?
+  monitor      Monitor?      @relation(fields: [monitorId], references: [id])
+}
+
+model Monitor {
+  id     Int     @id @default(autoincrement())
+  name   String
+  role   String  // "Director", "Monitor", "Enfermero"
+  groups Group[]
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  date        DateTime
+  location    String?
+}
+
+model InventoryItem {
+  id          Int      @id @default(autoincrement())
+  name        String
+  quantity    Int      @default(0)
+  category    String?
+  status      String   @default("Disponible") // "Disponible", "En uso", "Reparación"
+}
