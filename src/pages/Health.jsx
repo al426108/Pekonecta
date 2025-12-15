@@ -7,7 +7,7 @@ const Health = () => {
     const [medicalCases, setMedicalCases] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/participants')
+        fetch('/api/participants')
             .then(res => res.json())
             .then(data => {
                 // Filter participants with medical info

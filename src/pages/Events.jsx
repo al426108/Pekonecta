@@ -10,7 +10,7 @@ const Events = () => {
     const [formData, setFormData] = useState({ title: '', date: '', location: '', description: '' });
 
     const fetchEvents = () => {
-        fetch('http://localhost:3001/api/events')
+        fetch('/api/events')
             .then(res => res.json())
             .then(data => setEvents(data))
             .catch(err => console.error(err));
@@ -22,7 +22,7 @@ const Events = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch('http://localhost:3001/api/events', {
+        await fetch('/api/events', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

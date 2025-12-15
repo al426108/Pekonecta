@@ -8,7 +8,7 @@ const Inventory = () => {
     const [formData, setFormData] = useState({ name: '', quantity: 0, category: '', status: 'Disponible' });
 
     const fetchItems = () => {
-        fetch('http://localhost:3001/api/inventory')
+        fetch('/api/inventory')
             .then(res => res.json())
             .then(data => setItems(data))
             .catch(err => console.error(err));
@@ -20,7 +20,7 @@ const Inventory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch('http://localhost:3001/api/inventory', {
+        await fetch('/api/inventory', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...formData, quantity: parseInt(formData.quantity) })
@@ -65,8 +65,8 @@ const Inventory = () => {
                                 <td className="p-4 text-white font-bold">{item.quantity}</td>
                                 <td className="p-4">
                                     <span className={`px-2 py-1 rounded text-xs font-semibold ${item.status === 'Disponible' ? 'bg-green-500/20 text-green-500' :
-                                            item.status === 'En uso' ? 'bg-blue-500/20 text-blue-500' :
-                                                'bg-red-500/20 text-red-500'
+                                        item.status === 'En uso' ? 'bg-blue-500/20 text-blue-500' :
+                                            'bg-red-500/20 text-red-500'
                                         }`}>
                                         {item.status}
                                     </span>
